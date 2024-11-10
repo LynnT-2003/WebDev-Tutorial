@@ -1,24 +1,64 @@
+import IntroSection from "../components/IntroSection";
+import ProfileSection from "../components/ProfileSection";
+import { FloatingDock } from "@/components/ui/floating-dock";
+import {
+  IconBrandGithub,
+  IconBrandX,
+  IconExchange,
+  IconHome,
+  IconNewSection,
+  IconTerminal2,
+} from "@tabler/icons-react";
+import Image from "next/image";
+
 export default function Home() {
-  const name = String("John Doe"); // constant declaration (explicit String)
-  let age = Number(12.2); // variable declaration (expllicit Number)
+  const links = [
+    {
+      title: "Home",
+      icon: (
+        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+
+    {
+      title: "Products",
+      icon: (
+        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Components",
+      icon: (
+        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Aceternity UI",
+      icon: (
+        <Image
+          src="https://assets.aceternity.com/logo-dark.png"
+          width={20}
+          height={20}
+          alt="Aceternity Logo"
+        />
+      ),
+      href: "#",
+    },
+  ];
 
   return (
-    <div className="h-[100vh] w-screen flex justify-center items-center">
-      <div className="w-full h-full px-24 flex flex-col items-center justify-center">
-        <p className="text-center text-2xl">Hello, my name is {name}.</p>
-        <br />
-        <p className="text-center text-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-          aspernatur, cumque labore nemo quos voluptates. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Quibusdam aspernatur, cumque labore
-          nemo quos voluptates. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Quibusdam aspernatur, cumque labore nemo quos
-          voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Quibusdam aspernatur, cumque labore nemo quos voluptates.
-        </p>
-      </div>
-      <div className="w-full h-full flex items-center justify-center">
-        <img src="/profile/lynn_profile.png" className="w-[600px] h-[600px]" />
+    <div>
+      <IntroSection />
+      <ProfileSection id="profile" />
+
+      <div className="flex items-center justify-center pb-12 w-full">
+        <FloatingDock
+          mobileClassName="translate-y-20" // only for demo, remove for production
+          items={links}
+        />
       </div>
     </div>
   );
